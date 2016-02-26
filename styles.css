@@ -1,0 +1,76 @@
+body {
+  width: 80%;
+}
+
+.config {
+}
+
+#result {
+  display: none;
+  margin: 1em;
+  padding: 0.25em;
+  width: 45%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+  #result.success {
+    background-color: #11f62c;
+  }
+  #result.fail {
+    background-color: #e7aab5;
+  }
+
+.facts {
+  float: right;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+.facts ul {
+  margin: 0;
+}
+.hiera {
+  clear: both;
+  width: 100%;
+  border-top: 2px solid black;
+}
+  .hiera #update {
+    float: right;
+  }
+  .hiera .replace {
+    border: 1px solid #ccc;
+    background-color: #dedede;
+  }
+  .hiera .active {
+    border-bottom: 1px solid #ccc;
+  }
+    .hiera .active::before {
+      content: "> ";
+      color: red;
+    }
+    .hiera .active::after {
+      content: " <";
+      color: red;
+    }
+
+
+
+
+
+
+.datasources li .path {
+  font-family: monospace;
+  cursor: pointer;
+}
+.datasources li pre {
+  display: none;
+}
+
+.ext {
+  color: #ccc;
+}
+.path:hover .ext {
+  color: black;
+}
+
