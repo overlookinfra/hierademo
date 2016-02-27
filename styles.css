@@ -5,14 +5,22 @@ body {
 .config {
 }
 
+#openhelp {
+  font-size: smaller;
+}
+
 #result {
   display: none;
-  margin: 1em;
+  margin: 0.5em;
   padding: 0.25em;
-  width: 45%;
+  width: 55%;
   border: 1px solid black;
   border-radius: 5px;
 }
+  #result h4 {
+    border-bottom: 1px solid black;
+    margin: 0;
+  }
   #result.success {
     background-color: #11f62c;
   }
@@ -35,8 +43,12 @@ body {
   width: 100%;
   border-top: 2px solid black;
 }
-  .hiera #update {
+  .hiera #update,
+  .hiera #reset {
     float: right;
+  }
+  .hiera #reset {
+    display: none;
   }
   .hiera .replace {
     border: 1px solid #ccc;
@@ -44,6 +56,7 @@ body {
   }
   .hiera .active {
     border-bottom: 1px solid #ccc;
+    font-weight: bold;
   }
     .hiera .active::before {
       content: "> ";

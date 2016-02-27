@@ -9,7 +9,7 @@
     <script src="highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
-    <script src="http://yamltojson.com/js/yaml.js"></script>
+    <script src="yaml.js"></script>
 
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="scripts.js"></script>
@@ -25,14 +25,18 @@
           <li><label>environment</label><input type="text" name="environment" value="production"></li>
         </ul>
       </div>
+      <p>Retrieve data from Hiera, based on the values of facts. <a id="openhelp" href="#">[help]</a></p>
       <div class="line">Lookup key: <input id="key" type="text" name="key"> <input id="lookup" type="submit" value="lookup"></div>
-      <div id="result"></div>
+      <div id="result">
+        <h4>Progress:</h4>
+        <div id="message"></div>
+      </div>
 
     </div>
 
     <div class="hiera">
       <h3><code>hiera.yaml</code></h3>
-      <pre><code class="yaml"><input type="button" id="update" value="Interpolate Facts" />---
+      <pre><code class="yaml"><input type="button" id="update" value="Interpolate Facts" /><input type="button" id="reset" value="Reset Facts" />---
 :backends:
   - yaml
 
@@ -48,8 +52,7 @@
     </div>
 
     <div class="datasources">
-      <h3>Datasource Files</h3>
-      <p>(rooted in <code>/etc/puppetlabs/code/environments</code>)</p>
+      <h3>Datasource Files (in <code>/etc/puppetlabs/code/environments</code>):</h3>
       <ul>
         <li>
           <div class="path">development/hieradata/common<span class="ext">.yaml</span></div>
@@ -57,9 +60,11 @@
 message: This is the development environment</code></pre>
         </li>
         <li>
-          <div class="path">development/hieradata/nodes/lb.example.com<span class="ext">.yaml</span></div>
+          <div class="path">development/hieradata/nodes/master.example.com<span class="ext">.yaml</span></div>
           <pre><code class="yaml">---
-somekey: something</code></pre>
+puppet_enterprise::profile::master::java_args:
+  Xmx: '1024m'
+  Xms: '1024m'</code></pre>
         </li>
 
         <li>
@@ -68,25 +73,45 @@ somekey: something</code></pre>
 message: This is the production environment</code></pre>
         </li>
         <li>
-          <div class="path">production/hieradata/nodes/lb.example.com<span class="ext">.yaml</span></div>
+          <div class="path">production/hieradata/nodes/console.example.com<span class="ext">.yaml</span></div>
           <pre><code class="yaml">---
-somekey: something in production</code></pre>
+puppet_enterprise::profile::console::java_args:
+  Xmx: '512m'
+  Xms: '512m'</code></pre>
         </li>
 
         <li>
           <div class="path">production/hieradata/nodes/web01.example.com<span class="ext">.yaml</span></div>
           <pre><code class="yaml">---
-proxyserver: lb.example.com</code></pre>
+dbserver: pgsql.example.com
+dbuser: webs
+dbpassword: hunter2</code></pre>
         </li>
         <li>
-          <div class="path">production/hieradata/nodes/web02.example.com<span class="ext">.yaml</span></div>
+          <div class="path">production/hieradata/nodes/master.example.com<span class="ext">.yaml</span></div>
           <pre><code class="yaml">---
-blah: blah</code></pre>
+puppet_enterprise::profile::master::java_args:
+  Xmx: '4096m'
+  Xms: '4096m'</code></pre>
         </li>
 
       </ul>
 
     </div>
+
+  <div id="help-dialog" title="Usage help">
+    <p>Look up values from this simulated Hiera instance by entering a key and pressing
+      the <em>lookup</em> button. Hiera uses fact values to resolve the values it looks up
+      as it iterates through the hierarchy. You can change the fact values used in this
+      demo to affect how keys are resolved.</p>
+
+    <p>Look inside the datasource files at the bottom of the page to see the values you can
+      retrieve. Try looking up keys of <code>message</code>, <code>dbserver</code>, or
+      <code>puppet_enterprise::profile::master::java_args</code>.</p>
+
+    <p>Compare fact values and the datasource paths and try to predict which files will be
+      used to resolve the keys you're looking up.</p>
+  </div>
 
 	</body>
 </html>
