@@ -28,6 +28,11 @@
       <p>Retrieve data from Hiera, based on the values of facts. <a id="openhelp" href="#">[help]</a></p>
       <div class="line">Lookup key: <input id="key" type="text" name="key"> <input id="lookup" type="submit" value="lookup"></div>
       <div id="result">
+        <svg class="timer" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <circle class="countdown" r="4" cy="8" cx="8" stroke-width="8" stroke="black" fill="none"/>
+          </g>
+        </svg>
         <h4>Progress:</h4>
         <div id="message"></div>
       </div>

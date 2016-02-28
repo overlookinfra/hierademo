@@ -87,7 +87,14 @@ $(document).ready(function() {
 
     for (var i = 1; i < 6; i++) {
       timers.push(setTimeout(function(current) {
-        var previous = current -1;
+        var previous = current - 1;
+
+        // reset the timer widget -- allow time for DOM manipulation
+        $('#result .countdown').attr('class', 'countdown');
+        setTimeout(function() {
+          $('#result .countdown').attr('class', 'countdown counting');
+        },5);
+
         $('#level'+previous).removeClass('active');
         $('.datasources li pre').slideUp();
 
@@ -114,6 +121,11 @@ $(document).ready(function() {
               if(data.hasOwnProperty(key)) {
                 console.log('Found ' +key)
                 $('#result #message').text('Found: ' + JSON.stringify(data[key]));
+
+                // clear the timer -- allow time for DOM manipulation
+                setTimeout(function() {
+                  $('#result .countdown').attr('class', 'countdown');
+                },10);
                 $('#result').addClass('success');
 
                 // stop the lookup
@@ -132,7 +144,7 @@ $(document).ready(function() {
       $('#result #message').text('Not found.');
       $('#result').addClass('fail');
       $('#result').show();
-    }, 3000 * i));
+    }, 2000 * i));
 
   });
 

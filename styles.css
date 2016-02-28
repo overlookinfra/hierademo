@@ -17,6 +17,20 @@ body {
   border: 1px solid black;
   border-radius: 5px;
 }
+  #result svg.timer {
+     -webkit-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      float: right;
+  }
+  #result .countdown {
+    stroke-dasharray: 45; /* circumference in pixels */
+    stroke-dashoffset: 45;
+    transition: none;
+  }
+  #result .countdown.counting {
+    stroke-dashoffset: 0;
+    transition: all 2s linear;
+  }
   #result h4 {
     border-bottom: 1px solid black;
     margin: 0;
