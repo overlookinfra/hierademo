@@ -1,38 +1,64 @@
 <html>
-	<head>
-		<title>Interactive Hiera Demo</title>
+
+<head>
+    <title>Interactive Hiera Demo</title>
     <link rel="stylesheet" href="http:///code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="atelier-cave-light.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="atelier-cave-light.css">
     <script src="highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
 
     <script src="http://yamltojson.com/js/yaml.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="scripts.js"></script>
-	</head>
-	<body>
-    <h1>Interactive Hiera Demo</h1>
-    <div class="config">
-      <div class="facts">Facts
-        <ul>
-          <li><label>clientcert</label><input type="text" name="clientcert" value="web01.example.com"></li>
-          <li><label>role</label><input type="text" name="role" value="webserver"></li>
-          <li><label>datacenter</label><input type="text" name="datacenter" value="houston"></li>
-          <li><label>environment</label><input type="text" name="environment" value="production"></li>
-        </ul>
-      </div>
-      <div class="line">Lookup key: <input id="key" type="text" name="key"> <input id="lookup" type="submit" value="lookup"></div>
-      <div id="result"></div>
 
-    </div>
+</head>
 
+<body>
+    <h2>Interactive Hiera Demo</h2>
+    
+    <aside class="float-left">
+        <div>
+            <label for="key">Lookup key:</label>
+            <input id="key" type="text" name="key">
+            <input id="lookup" type="submit" value="Lookup">
+        </div>
+        <br>
+        <div id="facts">Facts
+            <ul>
+                <li>
+                    <label for="clientcert">clientcert</label>
+                    <input type="text" id="clientcert" name="clientcert" value="web01.example.com">
+                </li>
+                <li>
+                    <label for="role">role</label>
+                    <input type="text" id="role" name="role" value="webserver">
+                </li>
+                <li>
+                    <label for="datacenter">datacenter</label>
+                    <input type="text" id="datacenter" name="datacenter" value="houston">
+                </li>
+                <li>
+                    <label for="environment">environment</label>
+                    <input type="text" id="environment" name="environment" value="production">
+                </li>
+            </ul>
+        </div>
+        
+        <div id="result"></div>
+    </aside>
+    
+    <section class="float-right">    
     <div class="hiera">
       <h3><code>hiera.yaml</code></h3>
-      <pre><code class="yaml"><input type="button" id="update" value="Interpolate Facts" />---
+      <input type="button" id="update" class="float-right" value="Interpolate Facts" />    
+        
+      <pre><code class="yaml">---
 :backends:
   - yaml
 
@@ -48,45 +74,46 @@
     </div>
 
     <div class="datasources">
-      <h3>Datasource Files</h3>
-      <p>(rooted in <code>/etc/puppetlabs/code/environments</code>)</p>
-      <ul>
-        <li>
-          <div class="path">development/hieradata/common<span class="ext">.yaml</span></div>
-          <pre><code class="yaml">---
+        <h3>Datasource Files</h3>
+        <p>(rooted in <code>/etc/puppetlabs/code/environments</code>)</p>
+        <ul>
+            <li>
+                <div class="path">development/hieradata/common<span class="ext">.yaml</span></div>
+                <pre><code class="yaml">---
 message: This is the development environment</code></pre>
-        </li>
-        <li>
-          <div class="path">development/hieradata/nodes/lb.example.com<span class="ext">.yaml</span></div>
-          <pre><code class="yaml">---
+            </li>
+            <li>
+                <div class="path">development/hieradata/nodes/lb.example.com<span class="ext">.yaml</span></div>
+                <pre><code class="yaml">---
 somekey: something</code></pre>
-        </li>
+            </li>
 
-        <li>
-          <div class="path">production/hieradata/common<span class="ext">.yaml</span></div>
-          <pre><code class="yaml">---
+            <li>
+                <div class="path">production/hieradata/common<span class="ext">.yaml</span></div>
+                <pre><code class="yaml">---
 message: This is the production environment</code></pre>
-        </li>
-        <li>
-          <div class="path">production/hieradata/nodes/lb.example.com<span class="ext">.yaml</span></div>
-          <pre><code class="yaml">---
+            </li>
+            <li>
+                <div class="path">production/hieradata/nodes/lb.example.com<span class="ext">.yaml</span></div>
+                <pre><code class="yaml">---
 somekey: something in production</code></pre>
-        </li>
+            </li>
 
-        <li>
-          <div class="path">production/hieradata/nodes/web01.example.com<span class="ext">.yaml</span></div>
-          <pre><code class="yaml">---
+            <li>
+                <div class="path">production/hieradata/nodes/web01.example.com<span class="ext">.yaml</span></div>
+                <pre><code class="yaml">---
 proxyserver: lb.example.com</code></pre>
-        </li>
-        <li>
-          <div class="path">production/hieradata/nodes/web02.example.com<span class="ext">.yaml</span></div>
-          <pre><code class="yaml">---
+            </li>
+            <li>
+                <div class="path">production/hieradata/nodes/web02.example.com<span class="ext">.yaml</span></div>
+                <pre><code class="yaml">---
 blah: blah</code></pre>
-        </li>
+            </li>
 
-      </ul>
+        </ul>
 
     </div>
+    </section>
+</body>
 
-	</body>
 </html>

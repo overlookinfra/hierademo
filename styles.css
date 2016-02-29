@@ -1,8 +1,36 @@
 body {
-  width: 80%;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #222;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.config {
+aside {
+  width: 200px;
+}
+
+section {
+  width: 720px;
+  padding-left: 20px;
+  border-left: 1px solid #ddd;
+}
+
+input[type=text] {
+  width: 100%;
+  margin: 4px 0;
+}
+
+input[type=button],
+input[type=submit] {
+  background-color: #337ab7;
+  color: #fff;
+  border: 1px solid #2e6da4;
+  padding: 4px 12px;
+}
+
+header * {
+  display: inline-block;
+  margin: 0;
 }
 
 #result {
@@ -10,7 +38,7 @@ body {
   margin: 1em;
   padding: 0.25em;
   width: 45%;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 5px;
 }
   #result.success {
@@ -20,24 +48,14 @@ body {
     background-color: #e7aab5;
   }
 
-.facts {
-  float: right;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 0.5em;
-  padding: 0.5em;
+#facts ul {
+  padding: 0;
+  list-style: none;
 }
-.facts ul {
-  margin: 0;
-}
+
 .hiera {
-  clear: both;
   width: 100%;
-  border-top: 2px solid black;
 }
-  .hiera #update {
-    float: right;
-  }
   .hiera .replace {
     border: 1px solid #ccc;
     background-color: #dedede;
@@ -53,12 +71,7 @@ body {
       content: " <";
       color: red;
     }
-
-
-
-
-
-
+     
 .datasources li .path {
   font-family: monospace;
   cursor: pointer;
@@ -68,9 +81,17 @@ body {
 }
 
 .ext {
-  color: #ccc;
-}
-.path:hover .ext {
-  color: black;
+  color: #cccccc;
 }
 
+.path:hover .ext {
+  color: #222;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
