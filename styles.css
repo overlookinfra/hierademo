@@ -2,6 +2,7 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #222;
   max-width: 960px;
+  min-width: 960px;
   margin: 0 auto;
 }
 
@@ -134,5 +135,5 @@ header * {
 
 /* jquery UI overrides */
 .ui-widget {
-  font-size: 0.75em;
+  font-size: 0.85em;
 }

@@ -49,8 +49,8 @@ $(document).ready(function() {
 
     $( "#help-dialog" ).dialog({
       autoOpen: false,
-      height: 450,
-      width: 600,
+      height: 350,
+      width: 475,
       modal: true,
       buttons: {
         Ok: function() {
