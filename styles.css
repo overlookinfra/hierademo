@@ -116,7 +116,13 @@ header * {
 }
 .datasources li pre {
   display: none;
+  margin-top: 0.1em;
+  margin-bottom: 0.5em;
 }
+  .datasources li pre code {
+    margin: 0;
+    padding: 0;
+  }
 
 .ext {
   color: #cccccc;
