@@ -8,7 +8,7 @@ function clearAllTimers(timers) {
 }
 
 function interpolateVariables() {
-  $('.facts input[type=text]').each(function() {
+  $('#facts input[type=text]').each(function() {
     var name = $(this).attr("name");
     $('span.replace.'+name).text($(this).val());
   });
@@ -64,7 +64,7 @@ $(document).ready(function() {
     });
 
   // update hiera.yaml when facts change
-  $('.facts input[type=text]').on('input', function() {
+  $('#facts input[type=text]').on('input', function() {
     var name = $(this).attr("name");
     $('span.replace.'+name).text($(this).val());
   });
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
   $('#lookup').on('click', function() {
     var key = $('#key').val();
-    var env = $('.facts input[name=environment]').val();
+    var env = $('#facts input[name=environment]').val();
 
     clearAllTimers(timers);
     interpolateVariables();
