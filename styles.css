@@ -43,6 +43,7 @@ header * {
   width: 100%;
   border: 1px solid #000;
   border-radius: 5px;
+  font-size: 0.85em;
 }
   #result svg.timer {
      -webkit-transform: rotate(-90deg);
